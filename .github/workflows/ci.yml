@@ -18,6 +18,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '17'
+          distribution: 'temurin'
 
       - name: Setup MySQL
         uses: mirromutth/mysql-action@v1.1
