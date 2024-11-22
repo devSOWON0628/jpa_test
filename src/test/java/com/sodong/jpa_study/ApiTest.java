@@ -21,7 +21,7 @@ public class ApiTest {
     private MockMvc mockMvc;
 
     @Test
-    @DisplayName("test api (성공)")
+    @DisplayName("test api")
     void childInsertApiTest() throws Exception {
         ResultActions resultActions = mockMvc.perform(
                 MockMvcRequestBuilders.get("/child"));
