@@ -1,7 +1,6 @@
 package com.sodong.jpa_study.service;
 
 import com.sodong.jpa_study.dto.ChildDto;
-import com.sodong.jpa_study.dto.GrandDto;
 import com.sodong.jpa_study.dto.GrandResponseDto;
 import com.sodong.jpa_study.entity.ChildEntity;
 import com.sodong.jpa_study.entity.ParentsEntity;
