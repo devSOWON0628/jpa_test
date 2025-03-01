@@ -1,9 +1,12 @@
 package com.sodong.jpa_study.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Comment;
 import org.springframework.data.domain.Persistable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,6 +26,11 @@ public class GrandEntity implements Persistable<Integer> {
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "grand_generator") // seq 생성
     @Column(name = "GRAND_PK", nullable = false)
     private Integer grandPrimaryKey;
+
+    @OneToMany(mappedBy = "grand", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<ParentsEntity> parents = new ArrayList<>();
+
 
     @Override
     public Integer getId() {

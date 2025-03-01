@@ -1,10 +1,14 @@
 package com.sodong.jpa_study.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sodong.jpa_study.entity.id.ParentsEntityId;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Comment;
 import org.springframework.data.domain.Persistable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,6 +29,10 @@ public class ParentsEntity implements Persistable<ParentsEntityId> {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "GRAND_PK", nullable = false)
     private GrandEntity grand;
+
+    @OneToMany(mappedBy = "parents", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<ChildEntity> children = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "parent_generator") // seq 생성
