@@ -5,7 +5,12 @@ spring:
   application:
     name: jpa_study
   datasource:
-    url: jdbc:mysql://localhost:3306/jpa_study?rewriteBatchedStatements=true&profileSQL=true&logger=Slf4JLogger&maxQuerySizeToLog=999999
+    url: >
+      jdbc:mysql://localhost:3306/jpa_study?
+      rewriteBatchedStatements=true&  # 여러 SQL 문을 하나로 묶어서 한 번에 실행할 수 있도록 최적화합니다. 성능을 향상
+      profileSQL=true&                # SQL 쿼리가 실행될 때 그 내용을 로그로 출력
+      logger=Slf4JLogger&             # SQL 로그를 Slf4J 로깅 시스템을 통해 출력
+      maxQuerySizeToLog=999999        # 로그에 기록할 SQL 쿼리의 최대 크기
     username: root
     password: test
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -15,11 +20,11 @@ spring:
       ddl-auto: update
     properties:
       hibernate:
-        order_inserts: true
-        order_updates: true
+#        order_inserts: true
+#        order_updates: true
         dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
         show_sql: true
         jdbc:
           batch_size: 1000
-          batch_versioned_data: true
+#          batch_versioned_data: true

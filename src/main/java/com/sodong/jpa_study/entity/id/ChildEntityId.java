@@ -11,4 +11,16 @@ import java.io.Serializable;
 public class ChildEntityId implements Serializable {
     private ParentsEntityId parents; // parents의 pk
     private Integer childPrimaryKey; // child entity의 pk (본인)
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ChildEntityId that)) return false;
+        return parents.equals(that.parents) && childPrimaryKey.equals(that.childPrimaryKey);
+    }
+
+    @Override
+    public int hashCode() {
+        return parents.hashCode() + childPrimaryKey.hashCode();
+    }
 }
