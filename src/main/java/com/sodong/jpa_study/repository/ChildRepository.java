@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 public interface ChildRepository extends JpaRepository<ChildEntity, ChildEntityId> {
     @EntityGraph(attributePaths = {"parents", "parents.grand"})
-    Optional<ChildEntity> findByChildPrimaryKey(int childId);
+    ChildEntity findByChildPrimaryKey(int childId);
 }

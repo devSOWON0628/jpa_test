@@ -28,7 +28,7 @@ public class ServiceTest {
     @Transactional
     void addChild10InsertTest() {
         // given
-        testService.childInsertTest();
+        testService.insertChildTest();
         // when
         long childCount = childRepository.count();
         // then
@@ -40,7 +40,7 @@ public class ServiceTest {
     @Transactional
     void addGrandInsertTest() {
         // given
-        testService.bulkInsertTest();
+        testService.bulkInsertGrandEntities();
         // when
         long grandCount = grandRepository.count();
         // then
