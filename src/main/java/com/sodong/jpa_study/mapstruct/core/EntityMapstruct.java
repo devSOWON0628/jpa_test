@@ -1,4 +1,4 @@
-package com.sodong.jpa_study.mapstruct;
+package com.sodong.jpa_study.mapstruct.core;
 
 import org.mapstruct.MapperConfig;
 import org.mapstruct.ReportingPolicy;

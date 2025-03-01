@@ -1,9 +1,12 @@
 package com.sodong.jpa_study.service;
 
 import com.sodong.jpa_study.dto.ChildDto;
+import com.sodong.jpa_study.dto.GrandDto;
+import com.sodong.jpa_study.dto.GrandResponseDto;
 import com.sodong.jpa_study.entity.ChildEntity;
 import com.sodong.jpa_study.entity.ParentsEntity;
 import com.sodong.jpa_study.mapstruct.ChildMapstruct;
+import com.sodong.jpa_study.mapstruct.GrandResponseMapstruct;
 import com.sodong.jpa_study.repository.ChildRepository;
 
 import com.sodong.jpa_study.repository.ParentsRepository;
@@ -17,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -28,6 +32,7 @@ public class TestService {
     private final ChildRepository childRepository;
 
     private final ChildMapstruct childMapstruct;
+    private final GrandResponseMapstruct grandResponseMapstruct;
 
     public void insertChildTest() {
         GrandEntity grandEntity = GrandEntity.builder().build();
@@ -59,5 +64,11 @@ public class TestService {
         log.info("parentDto: {}", childDto.getParents());
         log.info("grandDto: {}", childDto.getParents().getGrand());
         return childDto;
+    }
+
+    public GrandResponseDto findGrandDetails(int grandId) {
+        Optional<GrandEntity> grandEntityOptional = grandRepository.findById(grandId);
+        GrandEntity grandEntity = grandEntityOptional.orElseThrow(() -> new RuntimeException("GrandEntity not found"));
+        return grandResponseMapstruct.toDto(grandEntity);
     }
 }
