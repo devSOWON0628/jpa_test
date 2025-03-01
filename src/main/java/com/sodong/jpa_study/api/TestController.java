@@ -7,6 +7,7 @@ import com.sodong.jpa_study.service.TestService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -16,13 +17,13 @@ public class TestController {
     private final TestService testService;
 
     // Child 엔티티 삽입 테스트
-    @GetMapping("/child/test-insert")
+    @PostMapping("/child/test-insert")
     public void insertChildTest() {
         testService.insertChildTest();
     }
 
     // Grand 엔티티 일괄 삽입 테스트
-    @GetMapping("/grand/test-bulk-insert")
+    @PostMapping("/grand/test-bulk-insert")
     public void bulkInsertGrandEntities() {
         testService.bulkInsertGrandEntities();
     }

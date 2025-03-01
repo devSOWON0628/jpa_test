@@ -24,7 +24,7 @@ public class ApiTest {
     @DisplayName("test api")
     void childInsertApiTest() throws Exception {
         ResultActions resultActions = mockMvc.perform(
-                MockMvcRequestBuilders.get("/child"));
+                MockMvcRequestBuilders.post("/child/test-insert"));
 
         resultActions.andExpect(status().isOk());
     }
