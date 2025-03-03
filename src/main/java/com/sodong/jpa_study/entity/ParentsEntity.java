@@ -1,12 +1,12 @@
 package com.sodong.jpa_study.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sodong.jpa_study.entity.id.ParentsEntityId;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Comment;
 import org.springframework.data.domain.Persistable;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +23,9 @@ import java.util.List;
         allocationSize = 100
 )
 @IdClass(ParentsEntityId.class) // 복합키
-public class ParentsEntity implements Persistable<ParentsEntityId> {
+public class ParentsEntity implements Persistable<ParentsEntityId>, Serializable {
+    @Serial
+    private static final long serialVersionUID = -10000000001L;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,7 +33,6 @@ public class ParentsEntity implements Persistable<ParentsEntityId> {
     private GrandEntity grand;
 
     @OneToMany(mappedBy = "parents", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<ChildEntity> children = new ArrayList<>();
 
     @Id

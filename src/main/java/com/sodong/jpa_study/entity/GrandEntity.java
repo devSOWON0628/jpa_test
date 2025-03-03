@@ -1,10 +1,11 @@
 package com.sodong.jpa_study.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.domain.Persistable;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,10 @@ import java.util.List;
         pkColumnName = "seq",// 시퀀스 컬럼명
         allocationSize = 100 // 시퀀스 한 번 호출할때마다 증가
 )
-public class GrandEntity implements Persistable<Integer> {
+public class GrandEntity implements Persistable<Integer>, Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -10000000000L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "grand_generator") // seq 생성
@@ -28,7 +32,6 @@ public class GrandEntity implements Persistable<Integer> {
     private Integer grandPrimaryKey;
 
     @OneToMany(mappedBy = "grand", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<ParentsEntity> parents = new ArrayList<>();
 
 

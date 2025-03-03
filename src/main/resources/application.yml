@@ -16,7 +16,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         order_inserts: true
@@ -30,3 +30,4 @@ spring:
           batch_size: 1000
           fetch_size: 1000
           batch_versioned_data: true
+    open-in-view: true # false 지연로딩에 문제가 있을 수 있음.
