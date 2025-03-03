@@ -48,7 +48,10 @@ public class ChildEntity implements Persistable<ChildEntityId>, Serializable {
 
     @Override
     public boolean isNew() {
-        return childPrimaryKey == null;
+        return childPrimaryKey == null ||
+                (getParents() == null || getParents().getParentsPrimaryKey() == null) ||
+                (getParents() != null && getParents().getGrand() != null && getParents().getGrand().getGrandPrimaryKey() == null);
     }
+
 }
 

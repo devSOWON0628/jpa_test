@@ -45,6 +45,7 @@ public class ParentsEntity implements Persistable<ParentsEntityId>, Serializable
 
     @Override
     public boolean isNew() {
-        return parentsPrimaryKey == null;
+        return parentsPrimaryKey == null ||
+                (getGrand() == null || getGrand().getGrandPrimaryKey() == null);
     }
 }
