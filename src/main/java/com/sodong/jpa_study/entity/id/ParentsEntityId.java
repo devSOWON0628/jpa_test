@@ -9,8 +9,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 public class ParentsEntityId implements Serializable {
-    private Integer grand;               // grand entity 의 pk
-    private Integer parentsPrimaryKey; // parents entity의 pk (본인)
+
+    private static final long serialVersionUID = -10000000001L;
+
+    private Integer grand;              // grand entity 의 pk
+    private Integer parentsPrimaryKey;  // parents entity의 pk (본인)
 
     @Override
     public boolean equals(Object o) {

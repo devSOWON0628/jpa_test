@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.domain.Persistable;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,6 @@ import java.util.List;
 )
 @IdClass(ParentsEntityId.class) // 복합키
 public class ParentsEntity implements Persistable<ParentsEntityId>, Serializable {
-    @Serial
     private static final long serialVersionUID = -10000000001L;
 
     @Id

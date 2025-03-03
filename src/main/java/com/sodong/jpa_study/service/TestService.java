@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -66,8 +65,7 @@ public class TestService {
     }
 
     public GrandResponseDto findGrandDetails(int grandId) {
-        Optional<GrandEntity> grandEntityOptional = grandRepository.findById(grandId);
-        GrandEntity grandEntity = grandEntityOptional.orElseThrow(() -> new RuntimeException("GrandEntity not found"));
+        GrandEntity grandEntity = grandRepository.findById(grandId);
         return grandResponseMapstruct.toDto(grandEntity);
     }
 }
