@@ -9,6 +9,9 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 public class ChildEntityId implements Serializable {
+
+    private static final long serialVersionUID = -10000000002L;
+
     private ParentsEntityId parents; // parents의 pk
     private Integer childPrimaryKey; // child entity의 pk (본인)
 

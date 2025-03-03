@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Persistable;
 
+
+import java.io.Serializable;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -21,7 +24,9 @@ import org.springframework.data.domain.Persistable;
         allocationSize = 100
 )
 @IdClass(ChildEntityId.class) // 복합키
-public class ChildEntity implements Persistable<ChildEntityId> {
+public class ChildEntity implements Persistable<ChildEntityId>, Serializable {
+
+    private static final long serialVersionUID = -10000000001L;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)

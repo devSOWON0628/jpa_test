@@ -23,7 +23,6 @@ import java.util.List;
 )
 public class GrandEntity implements Persistable<Integer>, Serializable {
 
-    @Serial
     private static final long serialVersionUID = -10000000000L;
 
     @Id
